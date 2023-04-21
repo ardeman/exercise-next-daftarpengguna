@@ -7,7 +7,7 @@ import Card from "@/components/Card";
 import Spinner from "@/components/Spinner";
 import Head from "next/head";
 
-export default function Home() {
+export default function UserList() {
   const title = "Daftar Pengguna";
   const [view, setView] = useState<"list" | "grid">("list"); // default view is list
   const { isLoading, error, data } = useQuery<UserType[]>("users", () =>

@@ -7,7 +7,6 @@ const Switcher = ({view, setView}: SwitchType) => {
         className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-blue-400 rounded-full px-4 py-2 ${
           view === "list" ? "active" : ""
         }`}
-        id="list"
         onClick={() => setView("list")}
       >
         <span>List</span>
@@ -16,7 +15,6 @@ const Switcher = ({view, setView}: SwitchType) => {
         className={`inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-blue-400 rounded-full px-4 py-2 ${
           view === "grid" ? "active" : ""
         }`}
-        id="grid"
         onClick={() => setView("grid")}
       >
         <span>Grid</span>

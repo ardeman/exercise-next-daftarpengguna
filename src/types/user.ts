@@ -5,6 +5,14 @@ export type UserType = {
   phone: string;
 };
 
-export type UsersType = {
-  users: UserType[]
+export type UserDetailType = {
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  website: string;
+};
+
+export type UserDetailProps = {
+  id: number;
 }
