@@ -4,29 +4,16 @@ import axios, { AxiosError } from "axios";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 const UserDetail = ({ id }: UserDetailProps) => {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
 
-  const { error, data, refetch } = useQuery<UserDetailType>("user", () =>
+  const { isLoading, error, data } = useQuery<UserDetailType>("user", () =>
     axios
       .get(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then((res) => res.data)
   );
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      await refetch();
-      setLoading(false);
-    };
-
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
 
   return (
     <div className="container px-2 md:px-0 mx-auto py-16 min-h-screen">
@@ -48,7 +35,7 @@ const UserDetail = ({ id }: UserDetailProps) => {
             <p className="text-center">
               An error has occurred: {(error as AxiosError).message}
             </p>
-          ) : loading ? (
+          ) : isLoading ? (
             <Spinner />
           ) : (
             <>
