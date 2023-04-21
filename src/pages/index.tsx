@@ -14,19 +14,16 @@ export default function Home() {
       .then((res) => res.data)
   );
 
-  if (error)
-    return <p>An error has occurred: {(error as AxiosError).message}</p>;
-
   return (
-    <div className="container mx-auto py-16 min-h-screen">
+    <div className="container px-2 md:px-0 mx-auto py-16 min-h-screen">
       <div className="grid gap-8">
         <h1 className="text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
           Daftar Pengguna
         </h1>
-        {isLoading ? (
-          <div className="flex justify-center">
-            <Spinner />
-          </div>
+        {error ? (
+          <p className="text-center">An error has occurred: {(error as AxiosError).message}</p>
+        ) : isLoading ? (
+          <Spinner />
         ) : (
           <>
             <div className="flex justify-center">
@@ -34,7 +31,7 @@ export default function Home() {
             </div>
             <div
               className={`${
-                view === "list" ? "flex flex-col" : "grid grid-cols-3"
+                view === "list" ? "flex flex-col" : "grid grid-cols-2 md:grid-cols-3"
               } gap-4`}
             >
               {data?.map((user) => (
